@@ -4,16 +4,6 @@
 //
 //  Created by Dana on 20/11/2022.
 //  Copyright © 2022 Sito. All rights reserved.
-<<<<<<< HEAD
-
-//test commit
-
-//+ commit
-//3 commit
-=======
-//another commit
-
->>>>>>> thirdBranch
 
 import UIKit
 
