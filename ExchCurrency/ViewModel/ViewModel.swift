@@ -50,7 +50,7 @@ final class ViewModel: ViewModelDelegate {
             self.refreshJsonRateData()})
     }
     
-    //get rates from api with Generic method and save it in structure
+    //get rates from api with Generic method and save it in the structure
     func refreshJsonRateData() {
         apiService.fetchData(urlString: "https://www.cbr-xml-daily.ru/daily_json.js") { (result : Result<WebSiteDecodable,Error>) in
             switch result {
@@ -78,7 +78,7 @@ final class ViewModel: ViewModelDelegate {
     }
     
     //configure string with rate for middle scrollView
-    func configureRateString(completion : (String) -> ()){
+    func configureRateString(completion: (String) -> ()){
         var rateString = String()
         let rate = getRate()
         let currencyMiddle = self.amountMoney.arrayOfCurrencyForScrollView[self.middleIndex]

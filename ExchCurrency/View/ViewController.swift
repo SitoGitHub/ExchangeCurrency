@@ -109,7 +109,7 @@ class ViewController: UIViewController {
         view.addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            cancelButton.topAnchor.constraint(equalTo: topView.topAnchor, constant: +30),
+            cancelButton.topAnchor.constraint(equalTo: topView.safeAreaLayoutGuide.topAnchor, constant: +5),
             cancelButton.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 7),
             cancelButton.heightAnchor.constraint(equalToConstant: 22),
             cancelButton.widthAnchor.constraint(equalToConstant: 100)
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
         
         exchangeButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            exchangeButton.topAnchor.constraint(equalTo: topView.topAnchor, constant: +30),
+            exchangeButton.topAnchor.constraint(equalTo: topView.safeAreaLayoutGuide.topAnchor, constant: +5),
             exchangeButton.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -7),
             exchangeButton.heightAnchor.constraint(equalToConstant: 22),
             exchangeButton.widthAnchor.constraint(equalToConstant: 100)
@@ -225,9 +225,10 @@ class ViewController: UIViewController {
     }
     
     func updateRateLabel(){
-        self.viewModel.configureRateString(completion: { (rateString) in
+        self.viewModel.configureRateString(completion: { [weak self] (rateString) in
             DispatchQueue.main.async {
-                self.middlePageViews[self.indexMiddleScrollView].rateLabel.text = rateString
+                guard let indexMiddleScrollView = self?.indexMiddleScrollView else { return }
+                self?.middlePageViews[indexMiddleScrollView].rateLabel.text = rateString
             }
         })
     }
